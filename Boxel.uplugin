@@ -1,0 +1,21 @@
+{
+	"FileVersion" : 1,
+	
+	"FriendlyName" : "Boxel",
+	"Version" : 1,
+	"VersionName" : "1.0",
+	"CreatedBy" : "SemiMono",
+	"CreatedByURL" : "https://github.com/semimono",
+	"EngineVersion" : "4.7.6",
+	"Description" : "A voxel based terrain editor.",
+	"Category" : "Terrain Editor",
+	"EnabledByDefault" : true,
+	
+	"Modules" :
+	[
+		{
+			"Name" : "Boxel",
+			"Type" : "Developer"
+		}
+	]
+}
