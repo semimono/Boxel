@@ -16,6 +16,10 @@
 		{
 			"Name" : "Boxel",
 			"Type" : "Developer"
+		},
+		{
+			"Name" : "BoxelEditor",
+			"Type" : "Developer"
 		}
 	]
 }
