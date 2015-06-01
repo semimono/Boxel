@@ -2,9 +2,9 @@
 
 namespace UnrealBuildTool.Rules
 {
-	public class Boxel : ModuleRules
+	public class BoxelEditor : ModuleRules
 	{
-		public Boxel(TargetInfo Target)
+		public BoxelEditor(TargetInfo Target)
 		{
 			PublicIncludePaths.AddRange(
 				new string[] {
@@ -14,7 +14,7 @@ namespace UnrealBuildTool.Rules
 
 			PrivateIncludePaths.AddRange(
 				new string[] {
-					"Boxel/Private",
+					"Private",
 					// ... add other private include paths required here ...
 				}
 				);
@@ -31,6 +31,19 @@ namespace UnrealBuildTool.Rules
 				new string[]
 				{
 					// ... add private dependencies that you statically link with here ...
+					"Core",
+					"CoreUObject",
+					"Slate",
+					"SlateCore",
+					"EditorStyle",
+					"Engine",
+					"Landscape",
+					"RenderCore",
+					"InputCore",
+					"UnrealEd",
+					"PropertyEditor",
+					"ImageWrapper",
+					"EditorWidgets",
 				}
 				);
 
@@ -38,6 +51,18 @@ namespace UnrealBuildTool.Rules
 				new string[]
 				{
 					// ... add any modules that your module loads dynamically here ...
+					"MainFrame",
+					"DesktopPlatform",
+					"ImageWrapper",
+				}
+				);
+
+			PrivateIncludePathModuleNames.AddRange(
+				new string[] {
+					"MainFrame",
+					"DesktopPlatform",
+					"ContentBrowser",
+					"AssetTools",
 				}
 				);
 		}
