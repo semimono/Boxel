@@ -2,101 +2,12 @@
 
 #pragma once
 
-#include "BoxelProxy.h" // for ELandscapeLayerPaintingRestriction
+// #include "BoxelProxy.h" // for ELandscapeLayerPaintingRestriction
 #include "BoxelEditorObject.generated.h"
 
-UENUM()
-namespace ELandscapeToolFlattenMode
-{
-	enum Type
-	{
-		//Invalid = -1,
-
-		// Flatten may both raise and lower values
-		Both = 0,
-
-		// Flatten may only raise values, values above the clicked point will be left unchanged
-		Raise = 1,
-
-		// Flatten may only lower values, values below the clicked point will be left unchanged
-		Lower = 2,
-	};
-}
 
 UENUM()
-namespace ELandscapeToolErosionMode
-{
-	enum Type
-	{
-		//Invalid = -1,
-
-		// Apply all erosion effects, both raising and lowering the heightmap
-		Both = 0,
-
-		// Only applies erosion effects that result in raising the heightmap
-		Raise = 1,
-
-		// Only applies erosion effects that result in lowering the heightmap
-		Lower = 2,
-	};
-}
-
-UENUM()
-namespace ELandscapeToolHydroErosionMode
-{
-	enum Type
-	{
-		//Invalid = -1,
-
-		// Rains in some places and not others, randomly
-		Both = 0,
-
-		// Rain is applied to the entire area
-		Positive = 1,
-	};
-}
-
-// Temp
-#if !CPP
-UENUM()
-namespace ELandscapeToolNoiseMode
-{
-	enum Type
-	{
-		//Invalid = -1,
-
-		// Noise will both raise and lower the heightmap
-		Both = 0,
-
-		// Noise will only raise the heightmap
-		Raise = 1,
-
-		// Noise will only lower the heightmap
-		Lower = 2,
-	};
-}
-#endif
-
-UENUM()
-namespace ELandscapeToolPasteMode
-{
-	enum Type
-	{
-		//Invalid = -1,
-
-		// Paste may both raise and lower values
-		Both = 0,
-
-		// Paste may only raise values, places where the pasted data would be below the heightmap are left unchanged. Good for copy/pasting mountains
-		Raise = 1,
-
-		// Paste may only lower values, places where the pasted data would be above the heightmap are left unchanged. Good for copy/pasting valleys or pits
-		Lower = 2,
-	};
-}
-
-UENUM()
-namespace ELandscapeConvertMode
+namespace EBoxelConvertMode
 {
 	enum Type
 	{
