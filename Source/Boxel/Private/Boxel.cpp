@@ -1,27 +1,36 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
 #include "BoxelPrivatePCH.h"
+#include "BoxelEditorMode.h"
 
 
-class FBoxel : public IBoxel
+class FBoxelModule : public IBoxelModule
 {
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 };
 
-IMPLEMENT_MODULE(FBoxel, Boxel)
+IMPLEMENT_MODULE(FBoxelModule, Boxel)
 
 
 
-void FBoxel::StartupModule()
+void FBoxelModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory (but after global variables are initialized, of course.)
-
+	
+	// register the editor mode
+	FEditorModeRegistry::Get().RegisterMode<FBoxelEditorMode>(
+		FBoxelEditorMode::modeId,
+		FText::FromName(FName("Boxel")),
+		FSlateIcon(FEditorStyle::GetStyleSetName(), "LevelEditor.LandscapeMode", "LevelEditor.LandscapeMode.Small"),
+		true,
+		707
+	);
 }
 
 
-void FBoxel::ShutdownModule()
+void FBoxelModule::ShutdownModule()
 {
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.

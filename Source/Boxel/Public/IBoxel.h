@@ -9,7 +9,7 @@
  * The public interface to this module.  In most cases, this interface is only public to sibling modules 
  * within this plugin.
  */
-class IBoxel : public IModuleInterface
+class IBoxelModule : public IModuleInterface
 {
 
 public:
@@ -20,9 +20,9 @@ public:
 	 *
 	 * @return Returns singleton instance, loading the module on demand if needed
 	 */
-	static inline IBoxel& Get()
+	static inline IBoxelModule& Get()
 	{
-		return FModuleManager::LoadModuleChecked< IBoxel >("Boxel");
+		return FModuleManager::LoadModuleChecked< IBoxelModule >("Boxel");
 	}
 
 	/**
