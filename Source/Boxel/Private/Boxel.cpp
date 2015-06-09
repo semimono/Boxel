@@ -2,6 +2,7 @@
 
 #include "BoxelPrivatePCH.h"
 #include "BoxelEditorMode.h"
+#include "BoxelEditorStyle.h"
 
 
 class FBoxelModule : public IBoxelModule
@@ -24,6 +25,7 @@ void FBoxelModule::StartupModule()
 		FBoxelEditorMode::modeId,
 		FText::FromName(FName("Boxel")),
 		FSlateIcon(FEditorStyle::GetStyleSetName(), "LevelEditor.LandscapeMode", "LevelEditor.LandscapeMode.Small"),
+		//FSlateIcon(FBoxelEditorStyle::Get()->GetStyleSetName(), "LevelEditor.BoxelMode", "LevelEditor.BoxelMode.Small"),
 		true,
 		707
 	);

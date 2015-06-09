@@ -14,7 +14,7 @@ namespace UnrealBuildTool.Rules
 
 			PrivateIncludePaths.AddRange(
 				new string[] {
-					"Boxel/Private",
+					//"Boxel/Private",
 					// ... add other private include paths required here ...
 				}
 				);
@@ -23,25 +23,26 @@ namespace UnrealBuildTool.Rules
 				new string[]
 				{
 					"Core",
+					"CoreUObject",
+					"Slate",
+					"SlateCore",
+					"Engine",
+					"Landscape",
+					"RenderCore",
+					"InputCore",
+					"PropertyEditor",
+					"ImageWrapper",
+					"EditorWidgets",
 					// ... add other public dependencies that you statically link with here ...
 				}
 				);
 				
 			PrivateDependencyModuleNames.AddRange(
 				new string[] {
-					"Core",
-					"CoreUObject",
-					"Slate",
-					"SlateCore",
 					"EditorStyle",
-					"Engine",
-					"Landscape",
-					"RenderCore",
-					"InputCore",
+					"Projects",
 					"UnrealEd",
-					"PropertyEditor",
-					"ImageWrapper",
-					"EditorWidgets",
+					"GameProjectGeneration"
 				}
 				);
 
