@@ -12,7 +12,7 @@
 
 FString FBoxelEditorStyle::InContent(const FString& RelativePath, const ANSICHAR* Extension)
 {
-	static FString ContentDir = FPaths::EnginePluginsDir() / TEXT("Boxel/Content");
+	static FString ContentDir = FPaths::GamePluginsDir() / TEXT("Boxel/Content");
 	return (ContentDir / RelativePath) + Extension;
 }
 
@@ -21,6 +21,7 @@ TSharedPtr< class ISlateStyle > FBoxelEditorStyle::Get() { return StyleSet; }
 
 void FBoxelEditorStyle::Initialize()
 {
+	UE_LOG(LogTemp, Log, TEXT("Initializing Boxel Style"));
 	// Const icon sizes
 	const FVector2D Icon40x40(40.0f, 40.0f);
 
@@ -40,6 +41,7 @@ void FBoxelEditorStyle::Initialize()
 	}
 
 	FSlateStyleRegistry::RegisterSlateStyle(*StyleSet.Get());
+	UE_LOG(LogTemp, Log, TEXT("Finished Initializing Boxel Style"));
 };
 
 #undef IMAGE_BRUSH
