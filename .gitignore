@@ -4,3 +4,5 @@
 *.dll
 *.pdb
 *.db
+*.lib
+*.exp
