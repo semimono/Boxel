@@ -1,9 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
 #include "BoxelPrivatePCH.h"
-#include "BoxelEditorMode.h"
-#include "BoxelEditorStyle.h"
-#include <windows.h>
+
 
 void* loadLibrary(const FString& fileName) {
 	FString filePath = FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("ExternalBin/Win64/")) +fileName; // Concatenate the plugins folder and the DLL file.
@@ -11,7 +9,7 @@ void* loadLibrary(const FString& fileName) {
 	void *libraryHandle = NULL;
 	if (FPaths::FileExists(filePath))
 	{
-		libraryHandle = FGenericPlatformProcess::GetDllHandle(*filePath); // Retrieve the DLL.
+		libraryHandle = FGenericPlatformProcess::GetDllHandle(*filePath);
 		if (libraryHandle == NULL) {
 			UE_LOG(LogTemp, Error, TEXT("Failed to load library: %s"), *filePath);
 		}
