@@ -1,6 +1,6 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
-#include "BoxelPrivatePCH.h"
+#include "BoxelEditorPrivatePCH.h"
 #include "BoxelEditorStyle.h"
 #include "SlateStyle.h"
 
