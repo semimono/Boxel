@@ -4,12 +4,12 @@
 
 
 void* loadLibrary(const FString& fileName) {
-	FString filePath = FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("ExternalBin/Win64/")) +fileName; // Concatenate the plugins folder and the DLL file.
+	FString filePath = FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/")) +fileName; // Concatenate the plugins folder and the DLL file.
 
 	void *libraryHandle = NULL;
 	if (FPaths::FileExists(filePath))
 	{
-		libraryHandle = FGenericPlatformProcess::GetDllHandle(*filePath);
+		libraryHandle = FPlatformProcess::GetDllHandle(*filePath);
 		if (libraryHandle == NULL) {
 			UE_LOG(LogTemp, Error, TEXT("Failed to load library: %s"), *filePath);
 		}
@@ -20,11 +20,11 @@ void* loadLibrary(const FString& fileName) {
 }
 
 void closeLibrary(void* libraryHandle) {
-	FGenericPlatformProcess::FreeDllHandle(libraryHandle);
+	FPlatformProcess::FreeDllHandle(libraryHandle);
 }
 
 void* lookupFunction(void* libraryHandle, const FString& funcName) {
-	return FGenericPlatformProcess::GetDllExport(libraryHandle, *funcName);
+	return FPlatformProcess::GetDllExport(libraryHandle, *funcName);
 }
 
 
@@ -43,6 +43,8 @@ IMPLEMENT_MODULE(FBoxelModule, Boxel)
 void FBoxelModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory (but after global variables are initialized, of course.)
+	UE_LOG(LogTemp, Log, TEXT("Loading library"));
+	void* voxelLib = loadLibrary("DracoVoxel.dll");
 }
 
 

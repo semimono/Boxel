@@ -7,7 +7,7 @@
 	"CreatedBy" : "SemiMono",
 	"CreatedByURL" : "https://github.com/semimono",
 	"EngineVersion" : "4.7.6",
-	"Description" : "A voxel based terrain editor.",
+	"Description" : "A voxel based terrain editor and modeller.",
 	"Category" : "Terrain Editor",
 	"CanContainContent" : true,
 	"IsBetaVersion" : true,
