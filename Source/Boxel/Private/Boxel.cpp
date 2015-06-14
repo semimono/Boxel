@@ -9,10 +9,13 @@ void* loadLibrary(const FString& fileName) {
 	void *libraryHandle = NULL;
 	if (FPaths::FileExists(filePath))
 	{
+		FString libraryDir = FPaths::GetPath(filePath);
+		FPlatformProcess::PushDllDirectory(*libraryDir);
 		libraryHandle = FPlatformProcess::GetDllHandle(*filePath);
 		if (libraryHandle == NULL) {
 			UE_LOG(LogTemp, Error, TEXT("Failed to load library: %s"), *filePath);
 		}
+		FPlatformProcess::PopDllDirectory(*libraryDir);
 	} else {
 		UE_LOG(LogTemp, Error, TEXT("Failed to load library; non-existant file: %s"), *filePath);
 	}
