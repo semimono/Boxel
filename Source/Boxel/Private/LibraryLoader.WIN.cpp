@@ -1,12 +1,11 @@
 
-#ifdef _WIN32
+#include "BoxelPrivatePCH.h"
 
+#ifdef _WIN32
 
 #include "LibraryLoader.h"
 
 #include <windows.h>
-
-const char *LIB_EXTENSION = ".dll";
 
 
 using namespace std;
@@ -19,7 +18,7 @@ void DynamicLibrary::unload() {
 }
 
 void* DynamicLibrary::loadLibrary() {
-	void* lib = LoadLibrary((libName + LIB_EXTENSION).c_str());
+	void* lib = LoadLibrary(*(libName +getLibExtension()));
 	if (lib == NULL) {
 		UE_LOG(LogTemp, Error, TEXT("Failed to load library: %s"), GetLastError());
 	}
@@ -30,8 +29,8 @@ void* DynamicLibrary::loadFunction(const char* funcName) const {
 	return (void*) GetProcAddress((HMODULE)lib, funcName);
 }
 
-const char* DynamicLibrary::getLibExtension() const {
-	return LIB_EXTENSION;
+FString DynamicLibrary::getLibExtension() const {
+	return FString(".dll");
 }
 
 

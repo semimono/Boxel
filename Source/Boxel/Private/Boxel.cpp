@@ -1,6 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
 #include "BoxelPrivatePCH.h"
+#include "LibraryLoader.h"
 
 #include "Voxel/cInterface.h"
 
@@ -66,7 +67,8 @@ void FBoxelModule::StartupModule()
 
 
 	//UE_LOG(LogTemp, Log, TEXT("Loading library %s"), *FString("DracoVoxel.dll"));
-	//void * lib = LoadLibrary(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/")).);
+	//DynamicLibrary lib(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/DracoVoxel.dll")));
+	////void * lib = LoadLibrary(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/")).);
 	//UE_LOG(LogTemp, Log, TEXT("Loaded library %s"), *FString("DracoVoxel.dll"));
 	//_VoxMakeTree makeTree = (_VoxMakeTree)lookupFunction(loadLibrary, FString("voxMakeTree"));
 	//UE_LOG(LogTemp, Log, TEXT("Looked up function %s"), *FString("voxMakeTree"));

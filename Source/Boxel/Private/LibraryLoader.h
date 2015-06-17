@@ -15,7 +15,7 @@ public:
 	void* loadFunction(const char* funcName) const;
 
 	const FString& getLibName() const;
-	const char* getLibExtension() const;
+	FString getLibExtension() const;
 
 private:
 	FString libName;
