@@ -3,8 +3,7 @@
 
 #ifdef _WIN32
 
-#include "LibraryLoader.h"
-
+#include "DynamicLibrary.h"
 #include <windows.h>
 
 

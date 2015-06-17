@@ -4,8 +4,7 @@
 #ifdef __APPLE__
 
 
-#include "scaleManager.h"
-
+#include "DynamicLibrary.h"
 #include <dlfcn.h>
 
 

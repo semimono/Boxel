@@ -4,12 +4,8 @@
 #ifdef __linux__
 
 
-#include "scaleManager.h"
-#include "draco.h"
-#include "common/path.h"
-
+#include "DynamicLibrary.h"
 #include <dlfcn.h>
-#include <iostream>
 
 
 const char *LIB_EXTENSION = ".so";

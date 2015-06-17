@@ -1,7 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
 #include "BoxelPrivatePCH.h"
-#include "LibraryLoader.h"
+#include "DynamicLibrary.h"
 
 #include "Voxel/cInterface.h"
 
