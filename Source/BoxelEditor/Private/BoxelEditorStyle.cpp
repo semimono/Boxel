@@ -21,7 +21,7 @@ TSharedPtr< class ISlateStyle > FBoxelEditorStyle::Get() { return StyleSet; }
 
 void FBoxelEditorStyle::Initialize()
 {
-	UE_LOG(LogTemp, Log, TEXT("Initializing Boxel Style"));
+	UE_LOG(LogBoxelEditor, Log, TEXT("Initializing Boxel Style"));
 	// Const icon sizes
 	const FVector2D Icon40x40(40.0f, 40.0f);
 
@@ -41,7 +41,7 @@ void FBoxelEditorStyle::Initialize()
 	}
 
 	FSlateStyleRegistry::RegisterSlateStyle(*StyleSet.Get());
-	UE_LOG(LogTemp, Log, TEXT("Finished Initializing Boxel Style"));
+	UE_LOG(LogBoxelEditor, Log, TEXT("Finished Initializing Boxel Style"));
 };
 
 #undef IMAGE_BRUSH

@@ -5,6 +5,10 @@
 #include "BoxelEditorStyle.h"
 
 
+//General Log
+DEFINE_LOG_CATEGORY(LogBoxelEditor);
+
+
 class FBoxelEditorModule : public IBoxelEditorModule
 {
 	/** IModuleInterface implementation */

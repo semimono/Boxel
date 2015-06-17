@@ -6,18 +6,22 @@
 using namespace std;
 
 
+DynamicLibrary::DynamicLibrary() : libName(""), lib(NULL) {}
 DynamicLibrary::DynamicLibrary(const FString& libName) : libName(libName), lib(NULL) {}
 
 DynamicLibrary::~DynamicLibrary() {
 	unload();
 }
 
-void DynamicLibrary::load() {
+void DynamicLibrary::setLibName(const FString& libName) {
+	unload();
+	this->libName = libName;
+}
+
+bool DynamicLibrary::load() {
 	unload();
 	lib = loadLibrary();
-
-	if (!lib)
-		UE_LOG(LogTemp, Error, TEXT("Could not load shared library %s"), *FString(libName + getLibExtension()));
+	return loaded();
 }
 
 

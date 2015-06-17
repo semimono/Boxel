@@ -6,10 +6,12 @@
 class DynamicLibrary {
 public:
 
+	DynamicLibrary();
 	DynamicLibrary(const FString& libName);
 	~DynamicLibrary();
 
-	void load();
+	void setLibName(const FString& libName);
+	bool load();
 	void unload();
 	bool loaded() const;
 	void* loadFunction(const char* funcName) const;
