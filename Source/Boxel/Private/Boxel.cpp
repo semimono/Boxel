@@ -22,8 +22,6 @@ class FBoxelModule : public IBoxelModule
 IMPLEMENT_MODULE(FBoxelModule, Boxel)
 
 
-typedef void*(*_VoxMakeTree)(unsigned char maxDepth, double size);
-
 
 void FBoxelModule::StartupModule()
 {
@@ -32,7 +30,7 @@ void FBoxelModule::StartupModule()
 	voxelLib.setLibName(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/DracoVoxel")));
 	voxelLib.load();
 	UE_LOG(LogBoxel, Log, TEXT("Loaded library %s"), *FString("DracoVoxel.dll"));
-	_VoxMakeTree makeTree = (_VoxMakeTree) voxelLib.loadFunction("voxMakeTree");
+	VoxMakeTreeFunc makeTree = (VoxMakeTreeFunc)voxelLib.loadFunction("voxMakeTree");
 	UE_LOG(LogBoxel, Log, TEXT("Looked up function %s"), *FString("voxMakeTree"));
 
 	void* tree = makeTree((unsigned char)6, 10.0);
