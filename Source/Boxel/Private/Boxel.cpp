@@ -4,6 +4,10 @@
 #include "DynamicLibrary.h"
 
 #include "Voxel/cInterface.h"
+#include "WorldListener.h"
+#include <list>
+
+using namespace std;
 
 
 //General Log
@@ -12,6 +16,7 @@ DEFINE_LOG_CATEGORY(LogBoxel);
 class FBoxelModule : public IBoxelModule
 {
 	DynamicLibrary voxelLib;
+	VoxelWorldListener listener;
 
 
 	/** IModuleInterface implementation */
@@ -26,15 +31,19 @@ IMPLEMENT_MODULE(FBoxelModule, Boxel)
 void FBoxelModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory (but after global variables are initialized, of course.)
-	UE_LOG(LogBoxel, Log, TEXT("Loading library %s"), *FString("DracoVoxel.dll"));
+	//UE_LOG(LogBoxel, Log, TEXT("Loading library %s"), *FString("DracoVoxel.dll"));
 	voxelLib.setLibName(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/DracoVoxel")));
 	voxelLib.load();
-	UE_LOG(LogBoxel, Log, TEXT("Loaded library %s"), *FString("DracoVoxel.dll"));
+	//UE_LOG(LogBoxel, Log, TEXT("Loaded library %s"), *FString("DracoVoxel.dll"));
 	VoxMakeTreeFunc makeTree = (VoxMakeTreeFunc)voxelLib.loadFunction("voxMakeTree");
-	UE_LOG(LogBoxel, Log, TEXT("Looked up function %s"), *FString("voxMakeTree"));
+	//UE_LOG(LogBoxel, Log, TEXT("Looked up function %s"), *FString("voxMakeTree"));
 
-	void* tree = makeTree((unsigned char)6, 10.0);
-	UE_LOG(LogBoxel, Log, TEXT("Called function %s"), *FString("voxMakeTree"));
+	Vox::Tree* tree = makeTree((unsigned char)6, 10.0);
+	//UE_LOG(LogBoxel, Log, TEXT("Called function %s"), *FString("voxMakeTree"));
+
+
+	list<WorldModel*> worldModels = tree->getWorlds();
+	worldModels.front()->addRenderer(listener);
 }
 
 

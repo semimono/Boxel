@@ -1,7 +1,5 @@
 #pragma once
 
-#include "UnrealEd.h"
-
 
 class DynamicLibrary {
 public:
