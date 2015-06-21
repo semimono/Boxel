@@ -6,7 +6,7 @@ using namespace std;
 using namespace Vox;
 
 
-FString libraryName("DracoVoxel");
+FString libraryName(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/DracoVoxel")));
 VoxelLibrary VoxelLibrary::singleton;
 
 VoxelLibrary& VoxelLibrary::get() {

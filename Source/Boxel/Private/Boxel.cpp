@@ -1,7 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 
 #include "BoxelPrivatePCH.h"
-#include "DynamicLibrary.h"
+#include "VoxelLibrary.h"
 
 #include "Voxel/cInterface.h"
 #include "WorldListener.h"
@@ -15,7 +15,6 @@ DEFINE_LOG_CATEGORY(LogBoxel);
 
 class FBoxelModule : public IBoxelModule
 {
-	DynamicLibrary voxelLib;
 	VoxelWorldListener listener;
 
 
@@ -32,18 +31,21 @@ void FBoxelModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory (but after global variables are initialized, of course.)
 	//UE_LOG(LogBoxel, Log, TEXT("Loading library %s"), *FString("DracoVoxel.dll"));
-	voxelLib.setLibName(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/DracoVoxel")));
-	voxelLib.load();
+	//voxelLib.setLibName(FPaths::Combine(*FPaths::GamePluginsDir(), TEXT("Boxel/ExternalBin/Win64/DracoVoxel")));
+	//voxelLib.load();
 	//UE_LOG(LogBoxel, Log, TEXT("Loaded library %s"), *FString("DracoVoxel.dll"));
-	VoxMakeTreeFunc makeTree = (VoxMakeTreeFunc)voxelLib.loadFunction("voxMakeTree");
+	//VoxMakeTreeFunc makeTree = (VoxMakeTreeFunc)voxelLib.loadFunction("voxMakeTree");
 	//UE_LOG(LogBoxel, Log, TEXT("Looked up function %s"), *FString("voxMakeTree"));
 
-	Vox::Tree* tree = makeTree((unsigned char)6, 10.0);
+	Vox::Tree* tree = VoxelLibrary::makeTree((unsigned char)6, 10.0);
 	//UE_LOG(LogBoxel, Log, TEXT("Called function %s"), *FString("voxMakeTree"));
 
 
 	list<WorldModel*> worldModels = tree->getWorlds();
 	worldModels.front()->addRenderer(listener);
+
+	Vox::SphereMut* initialMutator = VoxelLibrary::makeSphereMut(0, 0, 0, 5, 1, 1);
+	initialMutator->apply(*tree);
 }
 
 
@@ -51,7 +53,7 @@ void FBoxelModule::ShutdownModule()
 {
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
-	voxelLib.unload();
+	
 }
 
 

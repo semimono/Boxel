@@ -2,8 +2,6 @@
 
 #include "DynamicLibrary.h"
 #include "Voxel/cInterface.h"
-#include "Voxel/tree.h"
-#include "Voxel/mutators/sphere.h"
 
 
 class VoxelLibrary: private DynamicLibrary {
