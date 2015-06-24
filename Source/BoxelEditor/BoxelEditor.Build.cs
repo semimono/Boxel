@@ -27,6 +27,7 @@ namespace UnrealBuildTool.Rules
 					"Engine",
 					"Slate",
 					"SlateCore",
+					"Boxel"
 					//"Landscape",
 					//"RenderCore",
 					//"PropertyEditor",

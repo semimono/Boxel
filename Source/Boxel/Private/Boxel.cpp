@@ -45,7 +45,7 @@ void FBoxelModule::StartupModule()
 	worldModels.front()->addRenderer(listener);
 
 	Vox::SphereMut* initialMutator = VoxelLibrary::makeSphereMut(0, 0, 0, 5, 1, 1);
-	initialMutator->apply(*tree);
+	//initialMutator->apply(*tree);
 }
 
 

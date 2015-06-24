@@ -27,6 +27,9 @@ namespace UnrealBuildTool.Rules
 					"Engine",
 					"Slate",
 					"SlateCore",
+					"RHI",
+					"RenderCore",
+					"ShaderCore"
 					//"Landscape",
 					//"RenderCore",
 					//"PropertyEditor",
