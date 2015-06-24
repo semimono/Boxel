@@ -15,7 +15,6 @@ DEFINE_LOG_CATEGORY(LogBoxel);
 
 class FBoxelModule : public IBoxelModule
 {
-	VoxelWorldListener listener;
 
 
 	/** IModuleInterface implementation */
@@ -42,10 +41,10 @@ void FBoxelModule::StartupModule()
 
 
 	list<WorldModel*> worldModels = tree->getWorlds();
-	worldModels.front()->addRenderer(listener);
+	//worldModels.front()->addRenderer(listener);
 
 	Vox::SphereMut* initialMutator = VoxelLibrary::makeSphereMut(0, 0, 0, 5, 1, 1);
-	//initialMutator->apply(*tree);
+	initialMutator->apply(*tree);
 }
 
 
